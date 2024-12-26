@@ -22,13 +22,18 @@ const productsSchema=new mongoose.Schema({
     },
     ratings:{
         type:Number,
-        default:0,
+        default:4.4,
         min:0,
         max:5,
 
     }    
 },{timestamps:true});
 
-const productModel=mongoose.model('electronics',productsSchema);
+const productModel = mongoose.model('allproducts',productsSchema);
 
-module.exports=productModel;
+const ElectronicsModel = mongoose.model('electronics',productsSchema,'electronics');
+const ClothingModel = mongoose.model('clothing', productsSchema,'clothing');
+const JewelryModel = mongoose.model('jewelry', productsSchema,'jewelry');
+
+
+module.exports = {productModel,ElectronicsModel,ClothingModel,JewelryModel};
